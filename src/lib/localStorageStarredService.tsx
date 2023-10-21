@@ -11,7 +11,6 @@ export function toggleStarredStatus(id: number) {
 
   const isAlreadyStarred = starredList.includes(id);
 
-  console.log({ isAlreadyStarred });
   if (isAlreadyStarred) {
     starredList = starredList.filter((starredId: number) => id !== starredId);
   } else {

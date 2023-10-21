@@ -17,8 +17,6 @@ export function ImageConfigContextProvider({
       .then((resConfig: ConfigApi) => setConfig(resConfig));
   }, []);
 
-  // console.log(config);
-
   return (
     <ImageConfigContext.Provider value={config}>
       {children}

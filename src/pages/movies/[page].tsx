@@ -57,6 +57,7 @@ export const getServerSideProps = async (context: Context) => {
       },
       page: context.query.page,
       maxPages,
+      itemsOrder: context.query?.order || "",
     },
   };
 };
@@ -65,17 +66,22 @@ interface MovieProps {
   data: MovieDbPopularResponse;
   page: string;
   maxPages: number;
+  itemsOrder?: string;
 }
-export default function Movie({ data, page, maxPages }: MovieProps) {
+export default function Movie({
+  data,
+  page,
+  maxPages,
+  itemsOrder,
+}: MovieProps) {
   const router = useRouter();
 
   const onPaginationChange = (_: React.ChangeEvent<unknown>, page: number) => {
     router.push(`/movies/${page}${order === "DESC" ? "?order=DESC" : ""}`);
   };
-  const [order, setOrder] = useState("ASC");
+  const [order, setOrder] = useState<string>(itemsOrder || "ASC");
 
   function onAscendingChange(event: SelectChangeEvent) {
-    console.log(event.target.value);
     setOrder(event.target.value);
 
     router.push(
