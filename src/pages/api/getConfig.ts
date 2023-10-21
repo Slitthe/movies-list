@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { fetchOptions } from "@/lib/fetchConfig";
+
 import { ConfigApi } from "@/types/configApi";
+import { fetchOptions } from "@/lib/fetchConfig";
 
 export default async function handler(
   req: NextApiRequest,
