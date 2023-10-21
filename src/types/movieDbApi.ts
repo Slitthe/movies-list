@@ -6,6 +6,7 @@ export interface MovieDbPopularResponseItem {
   id: number;
   release_date: string;
   overview: string;
+  index?: number;
 }
 export interface MovieDbPopularResponse {
   page: number;

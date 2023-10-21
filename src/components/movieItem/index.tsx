@@ -8,11 +8,11 @@ import {
   toggleStarredStatus,
 } from "@/lib/localStorageStarredService";
 import clsx from "clsx";
-import { LuExternalLink } from "react-icons/lu";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { Rating } from "@mui/material";
+import { truncateText } from "@/lib/helpers";
 
 interface MovieItemProps {
   movie: MovieDbPopularResponseItem;
@@ -25,6 +25,7 @@ export default function MovieItem({ movie }: MovieItemProps) {
     vote_average,
     vote_count,
     overview,
+    index,
   } = movie;
 
   const imageConfig = useImageConfig();
@@ -32,7 +33,7 @@ export default function MovieItem({ movie }: MovieItemProps) {
 
   useEffect(() => {
     setIsStarred(getStarredStatus(movie.id));
-  }, []);
+  }, [movie.id]);
 
   function toggleStarred() {
     toggleStarredStatus(movie.id);
@@ -40,23 +41,6 @@ export default function MovieItem({ movie }: MovieItemProps) {
   }
 
   const releaseYear = new Date(release_date).getFullYear();
-
-  function truncateText(text: string, maxLength: number) {
-    if (text.length <= maxLength) {
-      return text;
-    }
-
-    // Find the last space within the maxLength
-    const lastSpace = text.lastIndexOf(" ", maxLength);
-
-    if (lastSpace === -1) {
-      // If there's no space within the maxLength, just truncate at maxLength
-      return text.substring(0, maxLength) + "...";
-    } else {
-      // Truncate at the last space within the maxLength
-      return text.substring(0, lastSpace) + "...";
-    }
-  }
 
   return (
     <div
@@ -77,6 +61,9 @@ export default function MovieItem({ movie }: MovieItemProps) {
         ) : (
           <AiOutlineStar />
         )}
+      </div>
+      <div className="absolute top-0 md:top-[initial] left-0 md:bottom-0 text-white shadow p-2 bg-gray-600 opacity-75 rounded-glass min-w-[2em] text-center">
+        {index}
       </div>
       <div className="w-full h-[200px] md:w-[200px] md:h-[300px]">
         {imageConfig && (
