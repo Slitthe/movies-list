@@ -106,6 +106,7 @@ export default function Movie({ data, page, maxPages }: MovieProps) {
               labelId="items-order"
               id="demo-simple-select"
               value={order}
+              label="Sort"
               size={"small"}
               onChange={onAscendingChange}
             >
