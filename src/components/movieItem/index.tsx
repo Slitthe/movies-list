@@ -90,11 +90,17 @@ export default function MovieItem({ movie }: MovieItemProps) {
         <div className="text-center mt-auto">
           <Rating
             name="hover-feedback"
-            className={"text-red-600"}
             value={vote_average}
             precision={0.25}
-            icon={<FavoriteIcon fontSize="inherit" />}
-            emptyIcon={<FavoriteBorderIcon fontSize="inherit" />}
+            icon={
+              <FavoriteIcon fontSize="inherit" className={"text-red-600"} />
+            }
+            emptyIcon={
+              <FavoriteBorderIcon
+                fontSize="inherit"
+                className={"text-red-600"}
+              />
+            }
             disabled
             sx={{ "&.Mui-disabled": { opacity: 1 } }}
             max={10}
