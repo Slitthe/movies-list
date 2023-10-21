@@ -12,7 +12,6 @@ export default async function handler(
   );
   const result: ConfigApi = await configRes.json();
 
-  console.log(result);
   res.status(200).json({
     images: {
       base_url: result.images.base_url,

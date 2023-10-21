@@ -1,11 +1,8 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { ConfigApi } from "@/types/configApi";
 
-const ImageConfigContext = createContext<ImageConfigContextValue | null>(null);
+const ImageConfigContext = createContext<ConfigApi | null>(null);
 
-interface ImageConfigContextValue {
-  config: any;
-}
 interface ImageConfigContextProps {
   children: React.ReactNode;
 }
@@ -20,10 +17,10 @@ export function ImageConfigContextProvider({
       .then((resConfig: ConfigApi) => setConfig(resConfig));
   }, []);
 
-  console.log(config);
+  // console.log(config);
 
   return (
-    <ImageConfigContext.Provider value={{ config }}>
+    <ImageConfigContext.Provider value={config}>
       {children}
     </ImageConfigContext.Provider>
   );
