@@ -1,4 +1,3 @@
-"use client";
 import { MovieDbPopularResponseItem } from "@/types/movieDbApi";
 import { useImageConfig } from "@/context/imageConfigContext";
 import Image from "next/image";

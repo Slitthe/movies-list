@@ -100,27 +100,41 @@ export default function Movie({ data, page, maxPages }: MovieProps) {
       </main>
       <div className="bg-glass shadow-glass backdrop-blur-glass border border-glass border-t-gray-700 border-t-2 fixed bottom-0 w-full h-16">
         <div className="flex w-full justify-center items-center">
-          <FormControl className="mr-4">
+          <FormControl className="mr-1 md:mr-4">
             <InputLabel id="items-order">Sort</InputLabel>
             <Select
               labelId="items-order"
               id="demo-simple-select"
               value={order}
-              label="Age"
               size={"small"}
               onChange={onAscendingChange}
             >
-              <MenuItem value={"ASC"}>Ascending</MenuItem>
-              <MenuItem value={"DESC"}>Descending</MenuItem>
+              <MenuItem value={"ASC"}>ASC</MenuItem>
+              <MenuItem value={"DESC"}>DESC</MenuItem>
             </Select>
           </FormControl>
           <Pagination
-            className="flex justify-center py-4 "
+            className="justify-center py-4 hidden md:block"
             count={maxPages}
             variant="outlined"
             shape="rounded"
             page={Number(page)}
             onChange={onPaginationChange}
+            showFirstButton
+            showLastButton
+          />
+
+          <Pagination
+            className="justify-center py-4 flex md:hidden"
+            count={maxPages}
+            variant="outlined"
+            shape="rounded"
+            page={Number(page)}
+            onChange={onPaginationChange}
+            showFirstButton
+            siblingCount={0}
+            showLastButton
+            boundaryCount={0}
           />
         </div>
       </div>
