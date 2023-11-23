@@ -8,7 +8,7 @@ export default async function handler(
     res: NextApiResponse<ConfigApi>,
 ) {
 
-    console.log({ body: req.body });
+    console.log({ body: JSON.stringify(req.body) });
 
 
     res.status(200).json({
